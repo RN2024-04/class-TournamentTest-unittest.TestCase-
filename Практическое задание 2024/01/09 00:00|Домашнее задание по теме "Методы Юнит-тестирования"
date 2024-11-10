@@ -1,0 +1,48 @@
+import unittest
+from tur import *
+
+
+
+class TournamentTest(unittest.TestCase):
+    def setUpClass(self):
+        all_results={}
+
+
+    def setUp(self):
+        vs = {'Усэйн': 10, 'Андрей': 9, 'Ник': 3}
+        self.runners = {n: Runner(name=n, speed=v) for n, v in vs.items()}
+
+    def tearDownClass(self):
+        for i,j in all_results.items():
+            print(f'{i}: {j}')
+        # for i in r1,r2,r3:
+        #     print (f'1:{r1},2:{r2},3:{r3}')
+    def tearDown(self):
+        r1 = Runner("Усэйн",10)
+        # r2 = Runner("Андрей", 9)
+        r3 = Runner("Ник", 3)
+        t1=Tournament(90,r1,r3)
+        all_results=t1.start()
+        self.assertTrue(all_results[2],r3)
+
+    def tearDown_2(self):
+        # r1 = Runner("Усэйн",10)
+        r2 = Runner("Андрей", 9)
+        r3 = Runner("Ник", 3)
+        t2=Tournament(90,r2,r3)
+        all_results=t2.start()
+        self.assertTrue(all_results[2],r3)
+
+    def tearDown_3(self):
+        r1 = Runner("Усэйн",10)
+        r2 = Runner("Андрей", 9)
+        r3 = Runner("Ник", 3)
+        t3=Tournament(90,r1,r2,r3)
+        all_results=t3.start()
+        self.assertTrue(all_results[4],r3)
+
+
+if __name__=='__main__':
+    unittest.main()
+
+#  в чем проблема? Почему код не работает?
